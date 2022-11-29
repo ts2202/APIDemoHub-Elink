@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="disable_bt">禁用蓝牙</string>
+    <string name="disable_bt_tether">禁用蓝牙热点</string>
+
+    <string name="disable_wifi">禁用WiFi</string>
+    <string name="disable_wifi_direct">禁用WiFi直连</string>
+    <string name="disable_wifi_tether">禁用WiFi热点</string>
+
+    <string name="disable_usb">禁用USB</string>
+    <string name="disable_usb_debug">禁用USB调试</string>
+    <string name="disable_usb_data">禁用USB数据</string>
+    <string name="disable_usb_tether">禁用USB热点</string>
+    <string name="disable_gps">禁用GPS</string>
+    <string name="disable_gps_mock">禁用模拟定位</string>
+    <string name="disable_mic">禁用麦克风</string>
+    <string name="disable_camera">禁用摄像头</string>
+    <string name="disable_camera_main">禁用后摄像头</string>
+    <string name="disable_camera_sub">禁用前摄像头</string>
+    <string name="disable_external_storage">禁用外部存储</string>
+    <string name="disable_sdcard">禁用SD卡</string>
+    <string name="disable_otg_disk">禁用OTG U盘</string>
+    <string name="disable_screenshot">禁用截屏</string>
+    <string name="package_name">包名</string>
+    <string name="class_name">类名</string>
+    <string name="component_name">组件名</string>
+    <string name="sn">序列号</string>
+    <string name="mac_wifi">WiFi MAC地址</string>
+    <string name="mac_bt">蓝牙MAC地址</string>
+    <string name="imei">IMEI号</string>
+</resources>

@@ -1,0 +1,15 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+        jcenter() // Warning: this repository is going to shut down soon
+    }
+}
+rootProject.name = "APIDemoHub"
+include ':app'
+include ':forElink'
+include ':forArgos'
+include ':forHangzhi'
+include ':forHite'
+include ':forUD'

@@ -1,0 +1,43 @@
+<resources>
+    <string name="app_name" translatable="false">API Demo</string>
+    <string name="title_activity_argos" translatable="false">Argos Demo</string>
+    <string name="title_activity_hangzhi" translatable="false">Hangzhi Demo</string>
+    <string name="title_activity_ud" translatable="false">UD Demo</string>
+
+    <string name="disable_bt">Disable BT</string>
+    <string name="disable_bt_tether">Disable BT Tether</string>
+
+    <string name="disable_wifi">Disable WIFI</string>
+    <string name="disable_wifi_direct">Disable WIFI Direct</string>
+    <string name="disable_wifi_tether">Disable WIFI Tether</string>
+
+    <string name="disable_usb">Disable USB</string>
+    <string name="disable_usb_debug">Disable USB Debug</string>
+    <string name="disable_usb_data">Disable USB Data</string>
+    <string name="disable_usb_tether">Disable USB Tether</string>
+
+    <string name="disable_gps">Disable GPS</string>
+    <string name="disable_gps_mock">Disable Mock Location</string>
+
+    <string name="disable_mic">Disable Microphone</string>
+    <string name="disable_camera">Disable Camera</string>
+    <string name="disable_camera_main">Disable Main Camera</string>
+    <string name="disable_camera_sub">Disable Sub Camera</string>
+
+    <string name="disable_external_storage">Disable External Storage</string>
+    <string name="disable_sdcard">Disable SDCard</string>
+    <string name="disable_otg_disk">Disable Otg U-Disk</string>
+
+    <string name="disable_screenshot">Disable Screenshot</string>
+
+    <string name="package_name">Package Name</string>
+    <string name="class_name">Class Name</string>
+    <string name="component_name">Component Name</string>
+
+    <string name="sn">SN</string>
+    <string name="mac_wifi">WIFI MAC</string>
+    <string name="mac_bt">BT MAC</string>
+    <string name="imei">IMEI</string>
+
+
+</resources>
