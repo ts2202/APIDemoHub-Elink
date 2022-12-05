@@ -24,6 +24,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import com.api.forelink.Utils
+import com.mdm.forargos.UtilsImpl
 import com.mdm.apidemo.ui.theme.APIDemoHubTheme
 
 class MainActivity : ComponentActivity() {
@@ -60,7 +61,7 @@ fun CheckPermission(activity: ComponentActivity) {
 // app manage
 
 @Composable
-fun ApiDisableApp(utils: Utils) {
+fun ApiDisableApp(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "启用/停用应用✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -92,7 +93,7 @@ fun ApiDisableApp(utils: Utils) {
 }
 
 @Composable
-fun ApiSilentInstall(utils: Utils) {
+fun ApiSilentInstall(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "静默安装✅/卸载✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -118,7 +119,7 @@ fun ApiSilentInstall(utils: Utils) {
 
 
 @Composable
-fun ApiInstallWhitelist(utils: Utils) {
+fun ApiInstallWhitelist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -176,7 +177,7 @@ fun ApiInstallWhitelist(utils: Utils) {
 }
 
 @Composable
-fun ApiUninstallWhitelist(utils: Utils) {
+fun ApiUninstallWhitelist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -234,7 +235,7 @@ fun ApiUninstallWhitelist(utils: Utils) {
 }
 
 @Composable
-fun ApiUninstallBlacklist(utils: Utils) {
+fun ApiUninstallBlacklist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -427,7 +428,7 @@ fun ApiKillApp(utils: Utils) {
 // firewall manage
 
 @Composable
-fun ApiWebWhitelist(utils: Utils) {
+fun ApiWebWhitelist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -491,7 +492,7 @@ fun ApiWebWhitelist(utils: Utils) {
 }
 
 @Composable
-fun ApiUrlWhitelist(utils: Utils) {
+fun ApiUrlWhitelist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -555,7 +556,7 @@ fun ApiUrlWhitelist(utils: Utils) {
 }
 
 @Composable
-fun ApiIpWhitelist(utils: Utils) {
+fun ApiIpWhitelist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -619,7 +620,7 @@ fun ApiIpWhitelist(utils: Utils) {
 }
 
 @Composable
-fun ApiAppWhitelist(utils: Utils) {
+fun ApiAppWhitelist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -683,7 +684,7 @@ fun ApiAppWhitelist(utils: Utils) {
 }
 
 @Composable
-fun ApiAppBlacklist(utils: Utils) {
+fun ApiAppBlacklist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -743,7 +744,7 @@ fun ApiAppBlacklist(utils: Utils) {
 // factory reset
 
 @Composable
-fun ApiFactoryReset(utils: Utils) {
+fun ApiFactoryReset(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用恢复出厂设置", Modifier.padding(0.dp, 4.dp)) }
 
@@ -764,7 +765,7 @@ fun ApiFactoryReset(utils: Utils) {
 }
 
 @Composable
-fun ApiClearApp(utils: Utils) {
+fun ApiClearApp(utils: UtilsImpl) {
     // Column(Modifier.padding(16.dp)) {
     //     TextButton(onClick = { (utils as MdmApiImpl).customSystemSettings(false) }) {
     //         Text(
@@ -785,7 +786,7 @@ fun ApiClearApp(utils: Utils) {
 }
 
 @Composable
-fun ApiAppData(utils: Utils) {
+fun ApiAppData(utils: UtilsImpl) {
     // Column(Modifier.padding(16.dp)) {
     //     TextButton(onClick = {}) {
     //         Text(
@@ -808,7 +809,7 @@ fun ApiAppData(utils: Utils) {
 }
 
 @Composable
-fun ApiAppCache(utils: Utils) {
+fun ApiAppCache(utils: UtilsImpl) {
     // Column(Modifier.padding(16.dp)) {
     //     TextButton(onClick = {}) {
     //         Text(
@@ -977,7 +978,7 @@ fun ApiDevOption(utils: Utils) {
 }
 
 @Composable
-fun ApiAdb(utils: Utils) {
+fun ApiAdb(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用USB调试✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -998,7 +999,7 @@ fun ApiAdb(utils: Utils) {
 }
 
 @Composable
-fun ApiUsbData(utils: Utils) {
+fun ApiUsbData(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用USB数据✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1019,7 +1020,7 @@ fun ApiUsbData(utils: Utils) {
 }
 
 @Composable
-fun ApiUsbDataMode(utils: Utils) {
+fun ApiUsbDataMode(utils: UtilsImpl) {
 
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "USB偏好设置✅", Modifier.padding(0.dp, 4.dp)) }
@@ -1064,7 +1065,7 @@ fun ApiUsbDataMode(utils: Utils) {
 // wireless manage
 
 @Composable
-fun ApiWifi(utils: Utils) {
+fun ApiWifi(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用Wifi", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1085,7 +1086,7 @@ fun ApiWifi(utils: Utils) {
 }
 
 @Composable
-fun ApiWIFIBlacklist(utils: Utils) {
+fun ApiWIFIBlacklist(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
 
         var txtList by remember { mutableStateOf(TextFieldValue("")) }
@@ -1180,7 +1181,7 @@ fun ApiWifiAdvancedBtn(utils: Utils) {
 }
 
 @Composable
-fun ApiWifiP2P(utils: Utils) {
+fun ApiWifiP2P(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用Wifi直连", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1201,7 +1202,7 @@ fun ApiWifiP2P(utils: Utils) {
 }
 
 @Composable
-fun ApiWifiTether(utils: Utils) {
+fun ApiWifiTether(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用Wifi热点", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1222,7 +1223,7 @@ fun ApiWifiTether(utils: Utils) {
 }
 
 @Composable
-fun ApiUsbTether(utils: Utils) {
+fun ApiUsbTether(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用USB热点", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1243,11 +1244,11 @@ fun ApiUsbTether(utils: Utils) {
 }
 
 @Composable
-fun ApiBluetooth(utils: Utils) {
+fun ApiBluetooth(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) {
             Text(
-                text = utils.getString(R.string.disable_bt),
+                text = "disable_bt", // utils.getString(R.string.disable_bt),
                 Modifier.padding(0.dp, 4.dp)
             )
         }
@@ -1269,7 +1270,7 @@ fun ApiBluetooth(utils: Utils) {
 }
 
 @Composable
-fun ApiBluetoothFileShare(utils: Utils) {
+fun ApiBluetoothFileShare(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用蓝牙文件传输✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1290,7 +1291,7 @@ fun ApiBluetoothFileShare(utils: Utils) {
 }
 
 @Composable
-fun ApiBluetoothTether(utils: Utils) {
+fun ApiBluetoothTether(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用蓝牙热点", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1312,7 +1313,7 @@ fun ApiBluetoothTether(utils: Utils) {
 }
 
 @Composable
-fun ApiGPS(utils: Utils) {
+fun ApiGPS(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用GPS定位✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1333,7 +1334,7 @@ fun ApiGPS(utils: Utils) {
 }
 
 @Composable
-fun ApiSMS(utils: Utils) {
+fun ApiSMS(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用短信✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1354,7 +1355,7 @@ fun ApiSMS(utils: Utils) {
 }
 
 @Composable
-fun ApiIncall(utils: Utils) {
+fun ApiIncall(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用来电✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1375,7 +1376,7 @@ fun ApiIncall(utils: Utils) {
 }
 
 @Composable
-fun ApiOutcall(utils: Utils) {
+fun ApiOutcall(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用去电✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1398,7 +1399,7 @@ fun ApiOutcall(utils: Utils) {
 // hardware manage
 
 @Composable
-fun ApiExternalStorage(utils: Utils) {
+fun ApiExternalStorage(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用TF/SD/OTG", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1420,6 +1421,11 @@ fun ApiExternalStorage(utils: Utils) {
 
 @Composable
 fun ApiCamera(utils: Utils) {
+    // 测试重载 ApiCamera(utils: UtilsImpl)
+}
+
+@Composable
+fun ApiCamera(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用相机", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1466,7 +1472,7 @@ fun ApiCamera(utils: Utils) {
 }
 
 @Composable
-fun ApiOTG(utils: Utils) {
+fun ApiOTG(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "禁用OTG功能✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1487,7 +1493,7 @@ fun ApiOTG(utils: Utils) {
 }
 
 @Composable
-fun ApiMic(utils: Utils) {
+fun ApiMic(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用麦克风", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1911,7 +1917,7 @@ fun ApiStatusBar(utils: Utils) {
 
 
 @Composable
-fun ApiScreenshotDisable(utils: Utils) {
+fun ApiScreenshotDisable(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅禁用截图", Modifier.padding(0.dp, 4.dp)) }
 
@@ -1932,7 +1938,7 @@ fun ApiScreenshotDisable(utils: Utils) {
 }
 
 @Composable
-fun ApiSN(utils: Utils) {
+fun ApiSN(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "✅读取各种SN", Modifier.padding(0.dp, 4.dp)) }
 
