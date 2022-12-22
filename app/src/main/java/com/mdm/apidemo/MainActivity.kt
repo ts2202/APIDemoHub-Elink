@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import com.api.forelink.Utils
 import com.mdm.forargos.UtilsImpl
-import com.mdm.apidemo.ui.theme.APIDemoHubTheme
+import com.mdm.apidemo.ui.theme.*
 import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
@@ -66,6 +66,15 @@ fun CheckPermission(activity: ComponentActivity) {
 fun ApiDisableApp(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "启用/禁用应用✅", Modifier.padding(0.dp, 4.dp)) }
+
+        val disableBtnColor = ButtonDefaults.buttonColors(
+            backgroundColor = backgrdRed,
+            contentColor = contentRed
+        )
+        val enableBtnColor = ButtonDefaults.buttonColors(
+            backgroundColor = backgrdGreen,
+            contentColor = contentGreen
+        )
 
         var txtPackage by remember { mutableStateOf(TextFieldValue("com.android.browser")) }
         TextField(value = txtPackage, onValueChange = {
@@ -127,7 +136,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
             ) { Text(text = "关闭应用") }
         }
         Spacer(Modifier.height(30.dp))
-        Card(Modifier.fillMaxWidth(0.99f)) {
+        Row(Modifier.fillMaxWidth(0.99f)) {
 /*            //var tt=Text(text = "状态：已禁用");
             val marketState = remember {
                 mutableStateOf( if (utils.getApplicationDisabled("com.android.vending")) "应用商城状态：已禁用" else "应用商城状态：已启用" )
@@ -167,12 +176,17 @@ fun ApiDisableApp(utils: UtilsImpl) {
                 mutableStateOf(utils.getApplicationDisabled("com.android.vending"))
             }
 
+
             Column() {
-                Row{
+                Row {
                     if (checkedState.value) {
-                        Text(text = "状态：已禁用", Modifier.padding(0.dp, 4.dp))
+                        TextButton(onClick = {}, Modifier, colors = disableBtnColor) {
+                            Text(text = "应用商城状态：已禁用", Modifier.padding(0.dp, 4.dp))
+                        }
                     } else {
-                        Text(text = "状态：已启用", Modifier.padding(0.dp, 4.dp))
+                        TextButton(onClick = {}, Modifier, colors = enableBtnColor) {
+                            Text(text = "应用商城状态：已启用", Modifier.padding(0.dp, 4.dp))
+                        }
                     }
                 }
                 Row {
@@ -181,7 +195,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
                         onClick = {
                             utils.setApplicationDisabled("com.android.vending", false)
                             //marketState = "应用商城状态：已启用"
-                            checkedState.value=false;
+                            checkedState.value = false;
                         },
                         Modifier
                             .padding(8.dp, 4.dp)
@@ -191,7 +205,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
                         onClick = {
                             utils.setApplicationDisabled("com.android.vending", true)
                             //marketState = "应用商城状态：已禁用"
-                            checkedState.value=true;
+                            checkedState.value = true;
                         },
                         Modifier
                             .padding(8.dp, 4.dp)
@@ -201,16 +215,20 @@ fun ApiDisableApp(utils: UtilsImpl) {
             }
         }
         Spacer(Modifier.height(30.dp))
-        Card(Modifier.fillMaxWidth(0.99f)) {
+        Row(Modifier.fillMaxWidth(0.99f)) {
             val checkedState = remember {
                 mutableStateOf(utils.getApplicationDisabled("com.android.chrome"))
             }
             Column {
                 Row {
                     if (checkedState.value) {
-                        Text(text = "状态：已禁用", Modifier.padding(0.dp, 4.dp))
+                        TextButton(onClick = {}, Modifier, colors = disableBtnColor) {
+                            Text(text = "浏览器状态：已禁用", Modifier.padding(0.dp, 4.dp))
+                        }
                     } else {
-                        Text(text = "状态：已启用", Modifier.padding(0.dp, 4.dp))
+                        TextButton(onClick = {}, Modifier, colors = enableBtnColor) {
+                            Text(text = "浏览器状态：已启用", Modifier.padding(0.dp, 4.dp))
+                        }
                     }
                 }
                 Row {
@@ -220,7 +238,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
                                 "com.android.chrome",
                                 false
                             )
-                            checkedState.value=false;
+                            checkedState.value = false;
                         },
                         Modifier
                             .padding(8.dp, 4.dp)
@@ -232,7 +250,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
                                 "com.android.chrome",
                                 true
                             )
-                            checkedState.value=true;
+                            checkedState.value = true;
                         },
                         Modifier
                             .padding(8.dp, 4.dp)

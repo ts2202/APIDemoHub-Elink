@@ -31,7 +31,7 @@ class ArgosActivity : ComponentActivity() {
                     Column(Modifier.verticalScroll(scrollState)) {
                         Row {
                             Column(Modifier.weight(1.0f, true)) {
-                                Card(Modifier.fillMaxWidth(0.99f)) {
+                                /*Card(Modifier.fillMaxWidth(0.99f)) {
                                     Column {
                                         ApiAppBlacklist(utils)
                                         ApiAppWhitelist(utils)
@@ -40,7 +40,7 @@ class ArgosActivity : ComponentActivity() {
                                         ApiIpWhitelist(utils)
                                     }
                                 }
-                                Spacer(Modifier.height(4.dp))
+                                Spacer(Modifier.height(4.dp))*/
                                 Card(Modifier.fillMaxWidth(0.99f)) {
                                     Column {
 
@@ -148,7 +148,7 @@ class ArgosActivity : ComponentActivity() {
 fun ApiGPSForceOn(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        TextButton(onClick = { }) {Text(text = "GPS强制启用", Modifier.padding(0.dp, 4.dp))}
+        TextButton(onClick = { }) { Text(text = "GPS强制启用", Modifier.padding(0.dp, 4.dp)) }
         Row {
             val checkedState = remember { mutableStateOf(utils.getGPSOn()) }
             Switch(checked = checkedState.value,
@@ -159,30 +159,32 @@ fun ApiGPSForceOn(utils: UtilsImpl) {
         }
     }
 }
+
 @Composable
 //add by elink_ts 网络位置提供程序强制打开  未找到调用方法
 fun ApiNetworkLocationForceOn(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        TextButton(onClick = { }) {Text(text = "网络位置强制打开", Modifier.padding(0.dp, 4.dp))}
+        TextButton(onClick = { }) { Text(text = "网络位置强制打开", Modifier.padding(0.dp, 4.dp)) }
         Row {
             val checkedState = remember { mutableStateOf(utils.getGPSOn()) }
-            Log.d("rrr","sssss"+checkedState)
+            Log.d("rrr", "sssss" + checkedState)
             Switch(checked = checkedState.value,
                 onCheckedChange = { checked ->
                     checkedState.value = checked
                     utils.setGPSOn(checked)
-                    Log.d("rrr","tttt"+checked)
+                    Log.d("rrr", "tttt" + checked)
                 })
         }
     }
 }
+
 @Composable
 //add by elink_ts 屏幕截图强制禁用  无效
 fun ApiScreenShot(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        TextButton(onClick = { }) {Text(text = "禁用屏幕截图", Modifier.padding(0.dp, 4.dp))}
+        TextButton(onClick = { }) { Text(text = "禁用屏幕截图", Modifier.padding(0.dp, 4.dp)) }
         Row {
             val checkedState = remember { mutableStateOf(utils.isScreenCaptureLocked()) }
             Switch(checked = checkedState.value,
@@ -193,11 +195,12 @@ fun ApiScreenShot(utils: UtilsImpl) {
         }
     }
 }
+
 @Composable
 fun ApiDisableMultiUser(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        TextButton(onClick = { }) {Text(text = "禁用多用户", Modifier.padding(0.dp, 4.dp))}
+        TextButton(onClick = { }) { Text(text = "禁用多用户", Modifier.padding(0.dp, 4.dp)) }
 
         Row {
 

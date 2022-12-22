@@ -703,6 +703,17 @@ public class UtilsImpl {
         }
     }
 
+    public void setStatusBarDisabled(boolean disabled) {
+        Intent intent = new Intent(disabled ? "hide.statusbar" : "show.statusbar");
+        intent.setPackage("com.android.systemui");
+        mContext.sendBroadcast(intent);
+    }
+
+    public void setNavigationBarDisabled(boolean disabled) {
+        Intent intent = new Intent(disabled ? "hide.navigationbar" : "show.navigationbar");
+        intent.setPackage("com.android.systemui");
+        mContext.sendBroadcast(intent);
+    }
 
     private String deduplication(String srcStr) {
         Log.d(TAG, "Log.getMethod()" + " " + srcStr);
@@ -977,6 +988,7 @@ public class UtilsImpl {
 
         return Settings.Global.getInt(this.mContext.getContentResolver(), "gps.module.enable", 1) == 0;
     }
+
     public void setGPSOn(boolean disabled) {
         Log.d(TAG, "Log.getMethod()" + " " + disabled);
         if (mdmService == null) return;
@@ -993,6 +1005,7 @@ public class UtilsImpl {
 
         return Settings.Global.getInt(this.mContext.getContentResolver(), "gps.module.enable", 1) == 1;
     }
+
     public void setMockLocationDisabled(boolean disabled) {
         Log.d(TAG, "Log.getMethod()" + " " + disabled);
         if (mdmService == null) return;
