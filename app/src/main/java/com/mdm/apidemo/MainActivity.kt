@@ -11,6 +11,7 @@ import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
+import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -26,6 +27,7 @@ import androidx.core.app.ActivityCompat
 import com.api.forelink.Utils
 import com.mdm.forargos.UtilsImpl
 import com.mdm.apidemo.ui.theme.APIDemoHubTheme
+import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -63,7 +65,7 @@ fun CheckPermission(activity: ComponentActivity) {
 @Composable
 fun ApiDisableApp(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
-        TextButton(onClick = {}) { Text(text = "启用/停用应用✅", Modifier.padding(0.dp, 4.dp)) }
+        TextButton(onClick = {}) { Text(text = "启用/禁用应用✅", Modifier.padding(0.dp, 4.dp)) }
 
         var txtPackage by remember { mutableStateOf(TextFieldValue("com.android.browser")) }
         TextField(value = txtPackage, onValueChange = {
@@ -86,9 +88,159 @@ fun ApiDisableApp(utils: UtilsImpl) {
                 Modifier
                     .padding(8.dp, 4.dp)
                     .weight(1.0f, true)
-            ) { Text(text = "停用应用") }
+            ) { Text(text = "禁用应用") }
         }
+        Spacer(Modifier.height(2.dp))
+        TextButton(onClick = {}) { Text(text = "禁用应用包名", Modifier.padding(0.dp, 4.dp)) }
+        Row {
+            //add by elink_ts 查询禁用包名
+            var disablePackage by remember { mutableStateOf(TextFieldValue(txtPackage.text)) }
+            TextField(value = disablePackage, onValueChange = {
+                disablePackage = it
+            }, label = { Text("包名") })
+        }
+        Spacer(Modifier.height(30.dp))
+        TextButton(onClick = {}) { Text(text = "强制启动/关闭应用包名", Modifier.padding(0.dp, 4.dp)) }
+        Row {
+            //add by elink_ts 强制启动应用包名
+            var disablePackage by remember { mutableStateOf(TextFieldValue(txtPackage.text)) }
+            TextField(value = disablePackage, onValueChange = {
+                disablePackage = it
+            }, label = { Text("包名") })
+        }
+        Row {
+            Button(
+                onClick = {
+                    utils.setApplicationDisabled(txtPackage.text, false)
+                },
+                Modifier
+                    .padding(8.dp, 4.dp)
+                    .weight(1.0f, true)
+            ) { Text(text = "启用应用") }
+            Button(
+                onClick = {
+                    utils.setApplicationDisabled(txtPackage.text, true)
+                },
+                Modifier
+                    .padding(8.dp, 4.dp)
+                    .weight(1.0f, true)
+            ) { Text(text = "关闭应用") }
+        }
+        Spacer(Modifier.height(30.dp))
+        Card(Modifier.fillMaxWidth(0.99f)) {
+/*            //var tt=Text(text = "状态：已禁用");
+            val marketState = remember {
+                mutableStateOf( if (utils.getApplicationDisabled("com.android.vending")) "应用商城状态：已禁用" else "应用商城状态：已启用" )
+            }
+            Column() {
+                Row() {
+                    TextButton(onClick = {}) {Text(text = marketState.value , Modifier.padding(0.dp, 4.dp))}
+                }
 
+                Row {
+                    // 声明式UI
+                    Button(
+                        onClick = {
+                            utils.setApplicationDisabled("com.android.vending", false)
+                            marketState.value = "应用商城状态：已启用"
+                        },
+                        Modifier
+                            .padding(8.dp, 4.dp)
+                            .weight(1.0f, true)
+                    ) { Text(text = "启用应用商城") }
+                    Button(
+                        onClick = {
+                            utils.setApplicationDisabled("com.android.vending", true)
+                            marketState.value = "应用商城状态：已禁用"
+                        },
+                        Modifier
+                            .padding(8.dp, 4.dp)
+                            .weight(1.0f, true)
+                    ) { Text(text = "禁用应用商城") }
+                }
+            }*/
+            //var tt=Text(text = "状态：已禁用");
+/*            var marketState = remember {
+               mutableStateOf( if (utils.getApplicationDisabled("com.android.vending")) "应用商城状态：已禁用" else "应用商城状态：已启用" )
+            }*/
+            val checkedState = remember {
+                mutableStateOf(utils.getApplicationDisabled("com.android.vending"))
+            }
+
+            Column() {
+                Row{
+                    if (checkedState.value) {
+                        Text(text = "状态：已禁用", Modifier.padding(0.dp, 4.dp))
+                    } else {
+                        Text(text = "状态：已启用", Modifier.padding(0.dp, 4.dp))
+                    }
+                }
+                Row {
+                    // 声明式UI
+                    Button(
+                        onClick = {
+                            utils.setApplicationDisabled("com.android.vending", false)
+                            //marketState = "应用商城状态：已启用"
+                            checkedState.value=false;
+                        },
+                        Modifier
+                            .padding(8.dp, 4.dp)
+                            .weight(1.0f, true)
+                    ) { Text(text = "启用应用商城") }
+                    Button(
+                        onClick = {
+                            utils.setApplicationDisabled("com.android.vending", true)
+                            //marketState = "应用商城状态：已禁用"
+                            checkedState.value=true;
+                        },
+                        Modifier
+                            .padding(8.dp, 4.dp)
+                            .weight(1.0f, true)
+                    ) { Text(text = "禁用应用商城") }
+                }
+            }
+        }
+        Spacer(Modifier.height(30.dp))
+        Card(Modifier.fillMaxWidth(0.99f)) {
+            val checkedState = remember {
+                mutableStateOf(utils.getApplicationDisabled("com.android.chrome"))
+            }
+            Column {
+                Row {
+                    if (checkedState.value) {
+                        Text(text = "状态：已禁用", Modifier.padding(0.dp, 4.dp))
+                    } else {
+                        Text(text = "状态：已启用", Modifier.padding(0.dp, 4.dp))
+                    }
+                }
+                Row {
+                    Button(
+                        onClick = {
+                            utils.setApplicationDisabled(
+                                "com.android.chrome",
+                                false
+                            )
+                            checkedState.value=false;
+                        },
+                        Modifier
+                            .padding(8.dp, 4.dp)
+                            .weight(1.0f, true)
+                    ) { Text(text = "启用浏览器") }
+                    Button(
+                        onClick = {
+                            utils.setApplicationDisabled(
+                                "com.android.chrome",
+                                true
+                            )
+                            checkedState.value=true;
+                        },
+                        Modifier
+                            .padding(8.dp, 4.dp)
+                            .weight(1.0f, true)
+                    ) { Text(text = "禁用浏览器") }
+                }
+            }
+        }
     }
 }
 

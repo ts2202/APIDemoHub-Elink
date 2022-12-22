@@ -977,7 +977,22 @@ public class UtilsImpl {
 
         return Settings.Global.getInt(this.mContext.getContentResolver(), "gps.module.enable", 1) == 0;
     }
+    public void setGPSOn(boolean disabled) {
+        Log.d(TAG, "Log.getMethod()" + " " + disabled);
+        if (mdmService == null) return;
 
+        try {
+            mdmService.setGPSDisabled(!disabled);
+        } catch (RemoteException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public boolean getGPSOn() {
+        Log.d(TAG, "Log.getMethod()");
+
+        return Settings.Global.getInt(this.mContext.getContentResolver(), "gps.module.enable", 1) == 1;
+    }
     public void setMockLocationDisabled(boolean disabled) {
         Log.d(TAG, "Log.getMethod()" + " " + disabled);
         if (mdmService == null) return;
