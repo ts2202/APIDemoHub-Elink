@@ -1,17 +1,17 @@
 package com.mdm.apidemo
 
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.provider.SyncStateContract
+import android.content.Context
+import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -25,13 +25,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.core.app.ActivityCompat
 import com.api.forelink.Utils
-import com.mdm.forargos.UtilsImpl
 import com.mdm.apidemo.ui.theme.*
-import org.w3c.dom.Text
+import com.mdm.forargos.UtilsImpl
+
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
-
         super.onCreate(savedInstanceState)
         setContent {
             APIDemoHubTheme {
@@ -63,7 +62,7 @@ fun CheckPermission(activity: ComponentActivity) {
 // app manage
 
 @Composable
-fun ApiDisableApp(utils: UtilsImpl) {
+fun ApiDisableApp(utils: UtilsImpl,TT:Utils,packageManager:PackageManager,yy:Context) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "启用/禁用应用✅", Modifier.padding(0.dp, 4.dp)) }
 
@@ -76,7 +75,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
             contentColor = contentGreen
         )
 
-        var txtPackage by remember { mutableStateOf(TextFieldValue("com.android.browser")) }
+        var txtPackage by remember { mutableStateOf(TextFieldValue("com.android.settings")) }
         TextField(value = txtPackage, onValueChange = {
             txtPackage = it
         }, label = { Text("包名") })
@@ -110,17 +109,34 @@ fun ApiDisableApp(utils: UtilsImpl) {
         }
         Spacer(Modifier.height(30.dp))
         TextButton(onClick = {}) { Text(text = "强制启动/关闭应用包名", Modifier.padding(0.dp, 4.dp)) }
-        Row {
+
             //add by elink_ts 强制启动应用包名
-            var disablePackage by remember { mutableStateOf(TextFieldValue(txtPackage.text)) }
+            var disablePackage by remember { mutableStateOf(TextFieldValue("com.android.settings")) }
             TextField(value = disablePackage, onValueChange = {
                 disablePackage = it
             }, label = { Text("包名") })
-        }
         Row {
             Button(
                 onClick = {
-                    utils.setApplicationDisabled(txtPackage.text, false)
+                    //utils.setApplicationDisabled(txtPackage.text, false)
+                   // var packageManager : PackageManager = packageManager
+                    //var info = packageManager.getPackageInfo(packageName,0)
+                    //开启新页面;
+                    //var intent=Intent(activity.baseContext,UDActivity::class.java)
+                    //val pm: PackageManager = getPackageManager()
+                    //val c: ContextWrapper =ContextWrapper(activity.baseContext)
+                    //val packageManager: PackageManager = c.getPackageManager()
+                    /*val intent: Intent? =
+                       packageManager.getLaunchIntentForPackage(disablePackage.text)*/
+                    //intent?.let { startActivity(activity.baseContext, it, Bundle()) }
+/*                    val ay:Activity= Activity();
+                    ay.startActivity(intt)*/
+                    //通过包名开启一个activity
+                    val intent: Intent? =
+                        packageManager.getLaunchIntentForPackage(disablePackage.text)
+                    Log.d("ts", "txtPackage.text:"+disablePackage.text)
+                    Log.d("ts", "intent:"+intent)
+                    yy.startActivity(intent)
                 },
                 Modifier
                     .padding(8.dp, 4.dp)
@@ -128,7 +144,7 @@ fun ApiDisableApp(utils: UtilsImpl) {
             ) { Text(text = "启用应用") }
             Button(
                 onClick = {
-                    utils.setApplicationDisabled(txtPackage.text, true)
+                    TT.forceStopApp(txtPackage.text)
                 },
                 Modifier
                     .padding(8.dp, 4.dp)

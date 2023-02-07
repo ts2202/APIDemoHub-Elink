@@ -1,8 +1,8 @@
 package com.mdm.apidemo
 
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
-import android.util.Log.DEBUG
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.*
@@ -12,7 +12,7 @@ import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.constraintlayout.solver.LinearSystem.DEBUG
+import com.api.forelink.Utils
 import com.mdm.apidemo.ui.theme.APIDemoHubTheme
 import com.mdm.forargos.UtilsImpl
 
@@ -20,14 +20,15 @@ import com.mdm.forargos.UtilsImpl
 class ArgosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val utils = UtilsImpl(baseContext)
-
+        val uu = Utils(baseContext)
+        var packageManager : PackageManager = getPackageManager()
         super.onCreate(savedInstanceState)
         setContent {
             APIDemoHubTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
-
                     val scrollState = rememberScrollState()
+                    val cc=this;
                     Column(Modifier.verticalScroll(scrollState)) {
                         Row {
                             Column(Modifier.weight(1.0f, true)) {
@@ -43,7 +44,6 @@ class ArgosActivity : ComponentActivity() {
                                 Spacer(Modifier.height(4.dp))*/
                                 Card(Modifier.fillMaxWidth(0.99f)) {
                                     Column {
-
                                         Row {
                                             ApiBluetooth(utils)
                                             ApiBluetoothTether(utils)
@@ -97,7 +97,7 @@ class ArgosActivity : ComponentActivity() {
                                 Spacer(Modifier.height(4.dp))
                                 Card(Modifier.fillMaxWidth(0.99f)) {
                                     Column {
-                                        ApiDisableApp(utils)
+                                        ApiDisableApp(utils,uu,packageManager,cc)
                                         Row {
                                             ApiInstallWhitelistForArgos(utils)
                                             ApiUninstallWhitelistForArgos(utils)
@@ -180,7 +180,7 @@ fun ApiNetworkLocationForceOn(utils: UtilsImpl) {
 }
 
 @Composable
-//add by elink_ts 屏幕截图强制禁用  无效
+//add by elink_ts 屏幕截图强制禁用
 fun ApiScreenShot(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {

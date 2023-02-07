@@ -968,7 +968,6 @@ public class UtilsImpl {
 
     public boolean getUsbTetherDisabled() {
         Log.d(TAG, "Log.getMethod()");
-
         return Settings.Global.getInt(this.mContext.getContentResolver(), "usb.tether.enable", 1) == 0;
     }
 

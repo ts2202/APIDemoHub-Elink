@@ -5,7 +5,8 @@
 
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.QUERY_ALL_PACKAGES"
+    <uses-permission
+        android:name="android.permission.QUERY_ALL_PACKAGES"
         tools:ignore="QueryAllPackagesPermission" />
 
     <application
@@ -17,20 +18,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.APIDemoHub">
         <activity
-            android:name=".UDActivity"
-            android:exported="true"
-            android:label="@string/title_activity_ud"
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name"
             android:theme="@style/Theme.APIDemoHub.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".UDActivity"
             android:exported="true"
-            android:label="@string/app_name"
+            android:label="@string/title_activity_ud"
             android:theme="@style/Theme.APIDemoHub.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -68,19 +69,9 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
-                <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+                <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
             </intent-filter>
         </activity>
-
-        <!--        <provider-->
-        <!--            android:name="androidx.core.content.FileProvider"-->
-        <!--            android:authorities="com.mdm.apidemo.fileProvider"-->
-        <!--            android:exported="false"-->
-        <!--            android:grantUriPermissions="true">-->
-        <!--            <meta-data-->
-        <!--                android:name="android.support.FILE_PROVIDER_PATHS"-->
-        <!--                android:resource="@xml/file_paths" />-->
-        <!--        </provider>-->
     </application>
 
 </manifest>

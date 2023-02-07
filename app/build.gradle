@@ -60,6 +60,7 @@ dependencies {
     implementation project(path: ':forElink')
 //    implementation project(path: ':forHangzhi')
     implementation project(path: ':forArgos')
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
 //    implementation files('libs/smartpad.jar')
 //    implementation project(path: ':forHite')
     testImplementation 'junit:junit:4.+'

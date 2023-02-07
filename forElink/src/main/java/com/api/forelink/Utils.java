@@ -2,6 +2,7 @@ package com.api.forelink;
 
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -10,7 +11,8 @@ import android.graphics.BitmapFactory;
 import android.os.Build;
 import android.provider.Settings;
 import android.util.Log;
-
+import android.widget.Button;
+import android.app.Activity;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
