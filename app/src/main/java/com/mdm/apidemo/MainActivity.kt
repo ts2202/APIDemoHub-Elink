@@ -99,7 +99,7 @@ fun ApiDisableApp(utils: UtilsImpl,TT:Utils,packageManager:PackageManager,yy:Con
             ) { Text(text = "禁用应用") }
         }
         Spacer(Modifier.height(2.dp))
-        TextButton(onClick = {}) { Text(text = "禁用应用包名", Modifier.padding(0.dp, 4.dp)) }
+        TextButton(onClick = {}) { Text(text = "禁用应用包名✅", Modifier.padding(0.dp, 4.dp)) }
         Row {
             //add by elink_ts 查询禁用包名
             var disablePackage by remember { mutableStateOf(TextFieldValue(txtPackage.text)) }
@@ -108,7 +108,7 @@ fun ApiDisableApp(utils: UtilsImpl,TT:Utils,packageManager:PackageManager,yy:Con
             }, label = { Text("包名") })
         }
         Spacer(Modifier.height(30.dp))
-        TextButton(onClick = {}) { Text(text = "强制启动/关闭应用包名", Modifier.padding(0.dp, 4.dp)) }
+        TextButton(onClick = {}) { Text(text = "强制启动/关闭应用包名✅", Modifier.padding(0.dp, 4.dp)) }
 
             //add by elink_ts 强制启动应用包名
             var disablePackage by remember { mutableStateOf(TextFieldValue("com.android.settings")) }

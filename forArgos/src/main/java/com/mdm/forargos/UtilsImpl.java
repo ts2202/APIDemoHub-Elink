@@ -2590,7 +2590,10 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "dns.list");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-
+        if(list==null)
+        {
+            return "null";
+        }
         return list;
     }
 
@@ -2698,7 +2701,9 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "url.blacklist.forapp");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-
+        if(list==null){
+            return "null";
+        }
         return list;
     }
 
@@ -2754,7 +2759,9 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "url.whitelist.forapp");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-
+        if(list==null){
+            return "null";
+        }
         return list;
     }
 
