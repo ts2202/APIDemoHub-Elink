@@ -63,6 +63,8 @@ interface IMDM {
     boolean lockSWUpdate(boolean lock);
     // boolean isCellData();
     // boolean lockCellData(boolean lock);
+    void setStatusBarDisabled(boolean disabled) ;
+    void setNavigationBarDisabled(boolean disabled) ;
     // private String deduplication(String srcStr);
     // private String deduplication(List<String> srcList);
     void setBluetoothDisabled(boolean disabled);

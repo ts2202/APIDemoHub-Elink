@@ -703,16 +703,32 @@ public class UtilsImpl {
         }
     }
 
-    public void setStatusBarDisabled(boolean disabled) {
-        Intent intent = new Intent(disabled ? "hide.statusbar" : "show.statusbar");
-        intent.setPackage("com.android.systemui");
-        mContext.sendBroadcast(intent);
+    public boolean setStatusBarDisabled(boolean disabled) {
+        try {
+            mdmService.setStatusBarDisabled(disabled);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
-    public void setNavigationBarDisabled(boolean disabled) {
-        Intent intent = new Intent(disabled ? "hide.navigationbar" : "show.navigationbar");
-        intent.setPackage("com.android.systemui");
-        mContext.sendBroadcast(intent);
+    public boolean getStatusBarDisabled() {
+        return Settings.Global.getInt(this.mContext.getContentResolver(), "show.statusbar.enabled", 1) == 0;
+    }
+
+    public boolean setNavigationBarDisabled(boolean disabled) {
+        try {
+            mdmService.setNavigationBarDisabled(disabled);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean getNavigationBarDisabled() {
+        return Settings.Global.getInt(this.mContext.getContentResolver(), "show.navigationbar.enabled", 1) == 0;
     }
 
     private String deduplication(String srcStr) {
@@ -2590,8 +2606,7 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "dns.list");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-        if(list==null)
-        {
+        if (list == null) {
             return "null";
         }
         return list;
@@ -2701,7 +2716,7 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "url.blacklist.forapp");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-        if(list==null){
+        if (list == null) {
             return "null";
         }
         return list;
@@ -2759,7 +2774,7 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "url.whitelist.forapp");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-        if(list==null){
+        if (list == null) {
             return "null";
         }
         return list;

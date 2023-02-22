@@ -1434,7 +1434,7 @@ fun ApiBluetooth(utils: UtilsImpl) {
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) {
             Text(
-                text = "disable_bt", // utils.getString(R.string.disable_bt),
+                text = "禁用蓝牙",
                 Modifier.padding(0.dp, 4.dp)
             )
         }

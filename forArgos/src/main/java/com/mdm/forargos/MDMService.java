@@ -66,6 +66,16 @@ public class MDMService extends Service {
         }
 
         @Override
+        public void setStatusBarDisabled(boolean disabled) throws RemoteException {
+
+        }
+
+        @Override
+        public void setNavigationBarDisabled(boolean disabled) throws RemoteException {
+
+        }
+
+        @Override
         public void setBluetoothDisabled(boolean disabled) throws RemoteException {
 
         }

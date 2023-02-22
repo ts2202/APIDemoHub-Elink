@@ -397,14 +397,14 @@ fun ApiDisableSafeModeBoot(utils: UtilsImpl) {
 fun ApiDisableStatusBar(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        val flag =false
+        val flag = utils.statusBarDisabled
         TextButton(onClick = { }) { Text(text = "✅禁用状态栏", Modifier.padding(0.dp, 4.dp)) }
         Row {
             val checkedState = remember { mutableStateOf(flag) }
             Switch(checked = checkedState.value,
                 onCheckedChange = { checked ->
                     checkedState.value = checked
-                    utils.setStatusBarDisabled(checked)
+                    utils.statusBarDisabled = checked
                 })
         }
     }
@@ -414,14 +414,14 @@ fun ApiDisableStatusBar(utils: UtilsImpl) {
 fun ApiDisableNavigationBar(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        val flag =false
+        val flag = utils.navigationBarDisabled
         TextButton(onClick = { }) { Text(text = "✅禁用导航栏", Modifier.padding(0.dp, 4.dp)) }
         Row {
             val checkedState = remember { mutableStateOf(flag)}
             Switch(checked = checkedState.value,
                 onCheckedChange = { checked ->
                     checkedState.value = checked
-                    utils.setNavigationBarDisabled(checked)
+                    utils.navigationBarDisabled = checked
                 })
         }
     }
