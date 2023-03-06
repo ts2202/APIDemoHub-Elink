@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.pm.PackageInfo;
+import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.IBinder;
 import android.os.RemoteException;
@@ -730,6 +731,75 @@ public class UtilsImpl {
     public boolean getNavigationBarDisabled() {
         return Settings.Global.getInt(this.mContext.getContentResolver(), "show.navigationbar.enabled", 1) == 0;
     }
+
+    public boolean lockAirplaneMode(boolean lock) {
+        try {
+            mdmService.lockAirplaneMode(lock);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean lockShareList(boolean lock) {
+        try {
+            mdmService.lockShareList(lock);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isShareListLocked() {
+        return Settings.Global.getInt(this.mContext.getContentResolver(), "share.list.enable", 1) == 0;
+    }
+
+
+    public boolean setSingleAppMode(boolean bSet) {
+        return setSingleAppMode(bSet, null);
+    }
+
+
+    public boolean setSingleAppMode(boolean bSet, String activity) {
+        try {
+            mdmService.setSingleAppMode(bSet, activity);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean preventNewAdminActivation(boolean prevent) {
+        try {
+            mdmService.preventNewAdminActivation(prevent);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isNewAdminActivationPrevented(){
+        return Settings.Global.getInt(this.mContext.getContentResolver(), "device.manager.active.prevented", 0) == 1;
+    }
+
+    public boolean preventNewAdminInstall(boolean prevent) {
+        try {
+            mdmService.preventNewAdminInstall(prevent);
+            return true;
+        } catch (RemoteException e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean isNewAdminActivationInstall(){
+        return Settings.Global.getInt(this.mContext.getContentResolver(), "device.manager.install.prevented", 0) == 1;
+    }
+
 
     private String deduplication(String srcStr) {
         Log.d(TAG, "Log.getMethod()" + " " + srcStr);
@@ -2606,9 +2676,6 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "dns.list");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-        if (list == null) {
-            return "null";
-        }
         return list;
     }
 
@@ -2716,9 +2783,6 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "url.blacklist.forapp");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-        if (list == null) {
-            return "null";
-        }
         return list;
     }
 
@@ -2774,9 +2838,6 @@ public class UtilsImpl {
         String list = Settings.Global.getString(this.mContext.getContentResolver(), "url.whitelist.forapp");
 
         Log.d(TAG, "Log.getMethod()" + " " + list);
-        if (list == null) {
-            return "null";
-        }
         return list;
     }
 

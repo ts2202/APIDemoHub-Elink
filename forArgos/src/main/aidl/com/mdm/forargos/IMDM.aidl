@@ -65,6 +65,11 @@ interface IMDM {
     // boolean lockCellData(boolean lock);
     void setStatusBarDisabled(boolean disabled) ;
     void setNavigationBarDisabled(boolean disabled) ;
+    void lockAirplaneMode(boolean lock);
+    void lockShareList(boolean lock);
+    void setSingleAppMode(boolean bSet, String activity);
+    void preventNewAdminInstall(boolean prevent);
+    void preventNewAdminActivation(boolean prevent);
     // private String deduplication(String srcStr);
     // private String deduplication(List<String> srcList);
     void setBluetoothDisabled(boolean disabled);

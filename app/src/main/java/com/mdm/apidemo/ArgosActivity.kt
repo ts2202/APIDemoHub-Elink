@@ -23,14 +23,14 @@ class ArgosActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val utils = UtilsImpl(baseContext)
         val uu = Utils(baseContext)
-        var packageManager : PackageManager = getPackageManager()
+        var packageManager: PackageManager = getPackageManager()
         super.onCreate(savedInstanceState)
         setContent {
             APIDemoHubTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(color = MaterialTheme.colors.background) {
                     val scrollState = rememberScrollState()
-                    val cc=this;
+                    val cc = this;
                     Column(Modifier.verticalScroll(scrollState)) {
                         Row {
                             Column(Modifier.weight(1.0f, true)) {
@@ -138,7 +138,7 @@ class ArgosActivity : ComponentActivity() {
                                 Spacer(Modifier.height(4.dp))
                                 Card(Modifier.fillMaxWidth(0.99f)) {
                                     Column {
-                                        ApiDisableApp(utils,uu,packageManager,cc)
+                                        ApiDisableApp(utils, uu, packageManager, cc)
                                         Row {
                                             ApiInstallWhitelistForArgos(utils)
                                             ApiUninstallWhitelistForArgos(utils)
@@ -242,7 +242,7 @@ fun ApiScreenShot(utils: UtilsImpl) {
 fun ApiClearPassword(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
-        val flag =false
+        val flag = false
         TextButton(onClick = { }) { Text(text = "✅强制清除密码", Modifier.padding(0.dp, 4.dp)) }
         Row {
             val checkedState = remember { mutableStateOf(flag) }
@@ -254,13 +254,14 @@ fun ApiClearPassword(utils: UtilsImpl) {
         }
     }
 }
+
 @Composable
 //add by elink_ts 更新防火墙DNS列表
 fun ApiInsertDnslist(utils: UtilsImpl) {
 //    jetpack compose
     Column(Modifier.padding(16.dp)) {
         TextButton(onClick = {}) { Text(text = "更新防火墙DNS列表✅", Modifier.padding(0.dp, 4.dp)) }
-        var dnslist by remember { mutableStateOf(TextFieldValue(utils.queryDnslist()))}
+        var dnslist by remember { mutableStateOf(TextFieldValue(utils.queryDnslist() ?: "")) }
         TextField(value = dnslist, onValueChange = {
             dnslist = it
         }, label = { Text("dns") })
@@ -327,6 +328,7 @@ fun ApiSeturlBlacklist(utils: UtilsImpl) {
         Text(text = txtList.text, Modifier.padding(8.dp, 4.dp), fontSize = 12.sp)
     }
 }
+
 @Composable
 //add by elink_ts 设置url白名单
 fun ApiSetUrlWhitelist(utils: UtilsImpl) {
@@ -376,6 +378,7 @@ fun ApiSetUrlWhitelist(utils: UtilsImpl) {
         Text(text = txtList.text, Modifier.padding(8.dp, 4.dp), fontSize = 12.sp)
     }
 }
+
 @Composable
 //add by elink_ts 安全引导模式禁用 无效果
 fun ApiDisableSafeModeBoot(utils: UtilsImpl) {
@@ -392,6 +395,7 @@ fun ApiDisableSafeModeBoot(utils: UtilsImpl) {
         }
     }
 }
+
 @Composable
 //add by elink_ts 状态栏禁用 禁用有效但无get方法无法保存状态
 fun ApiDisableStatusBar(utils: UtilsImpl) {
@@ -409,6 +413,7 @@ fun ApiDisableStatusBar(utils: UtilsImpl) {
         }
     }
 }
+
 @Composable
 //add by elink_ts 导航栏禁用  禁用有效但无get方法无法保存状态
 fun ApiDisableNavigationBar(utils: UtilsImpl) {
@@ -417,7 +422,7 @@ fun ApiDisableNavigationBar(utils: UtilsImpl) {
         val flag = utils.navigationBarDisabled
         TextButton(onClick = { }) { Text(text = "✅禁用导航栏", Modifier.padding(0.dp, 4.dp)) }
         Row {
-            val checkedState = remember { mutableStateOf(flag)}
+            val checkedState = remember { mutableStateOf(flag) }
             Switch(checked = checkedState.value,
                 onCheckedChange = { checked ->
                     checkedState.value = checked
@@ -426,6 +431,7 @@ fun ApiDisableNavigationBar(utils: UtilsImpl) {
         }
     }
 }
+
 @Composable
 fun ApiDisableMultiUser(utils: UtilsImpl) {
 //    jetpack compose

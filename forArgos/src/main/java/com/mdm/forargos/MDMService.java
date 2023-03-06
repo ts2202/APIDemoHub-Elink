@@ -1,11 +1,15 @@
 package com.mdm.forargos;
 
 import android.app.Service;
+import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Binder;
 import android.os.IBinder;
 import android.os.RemoteException;
+import android.provider.Settings;
+
+import java.util.Arrays;
 
 public class MDMService extends Service {
     Context mContext;
@@ -72,6 +76,31 @@ public class MDMService extends Service {
 
         @Override
         public void setNavigationBarDisabled(boolean disabled) throws RemoteException {
+
+        }
+
+        @Override
+        public void lockAirplaneMode(boolean lock) throws RemoteException {
+
+        }
+
+        @Override
+        public void lockShareList(boolean lock) throws RemoteException {
+
+        }
+
+        @Override
+        public void setSingleAppMode(boolean bSet, String activity) throws RemoteException {
+
+        }
+
+        @Override
+        public void preventNewAdminInstall(boolean prevent) throws RemoteException {
+
+        }
+
+        @Override
+        public void preventNewAdminActivation(boolean prevent) throws RemoteException {
 
         }
 
